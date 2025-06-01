@@ -1,0 +1,15 @@
+[ {
+  "id" : "c1",
+  "nom" : "Afro Show",
+  "date" : [ 2025, 5, 26, 19, 13, 50, 701068201 ],
+  "lieu" : "Douala",
+  "capaciteMax" : 100,
+  "participants" : [ ]
+}, {
+  "id" : "conf1",
+  "nom" : "Tech Talk",
+  "date" : [ 2025, 5, 26, 19, 13, 50, 701640941 ],
+  "lieu" : "Yaoundé",
+  "capaciteMax" : 80,
+  "participants" : [ ]
+} ]

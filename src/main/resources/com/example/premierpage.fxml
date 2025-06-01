@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Système de Gestion d'Événements Distribué" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Gestion des Événements">
+            <content>
+                <VBox spacing="10.0">
+                    <HBox spacing="10.0" alignment="CENTER_LEFT">
+                        <Label text="Type d'événement:" />
+                        <ComboBox fx:id="eventTypeComboBox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Conférence" />
+                                    <String fx:value="Concert" />
+                                </FXCollections>
+                            </items>
+                            <value>
+                                <String fx:value="Conférence" /> </value>
+                        </ComboBox>
+                        <Button text="Créer un nouvel événement" onAction="#handleCreateNewEvent" />
+                    </HBox>
+
+                    <Label text="Liste des Événements" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colId" prefWidth="80" />
+                            <TableColumn text="Nom" fx:id="colNom" prefWidth="150" />
+                            <TableColumn text="Date" fx:id="colDate" prefWidth="120" />
+                            <TableColumn text="Lieu" fx:id="colLieu" prefWidth="120" />
+                            <TableColumn text="Capacité Max" fx:id="colCapacite" prefWidth="100" />
+                            <TableColumn text="Type" fx:id="colType" prefWidth="100" />
+                            <TableColumn text="Action" fx:id="colAction" prefWidth="120" />
+                        </columns>
+                    </TableView>
+                    <HBox spacing="10.0" alignment="CENTER_LEFT">
+                        <Button text="Recharger les événements" onAction="#loadEvents" />
+                        <Button text="Sauvegarder les événements" onAction="#saveEvents" />
+                    </HBox>
+                </VBox>
+            </content>
+        </Tab>
+        <Tab text="Détails de l'Événement &amp; Participants">
+            <content>
+                <VBox spacing="10.0">
+                    <Label text="Détails de l'événement sélectionné" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <GridPane hgap="10" vgap="5">
+                        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailIdLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="Nom:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailNomLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailDateLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="Lieu:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailLieuLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <Label text="Capacité Max:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailCapaciteLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                        <Label text="Type:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailTypeLabel" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                        <Label text="Spécificité 1:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailSpecific1Label" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                        <Label text="Spécificité 2:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                        <Label fx:id="detailSpecific2Label" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    </GridPane>
+
+                    <Label text="Participants Inscrits" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                    <TableView fx:id="participantTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colParticipantId" prefWidth="80" />
+                            <TableColumn text="Nom" fx:id="colParticipantNom" prefWidth="150" />
+                            <TableColumn text="Email" fx:id="colParticipantEmail" prefWidth="200" />
+                        </columns>
+                    </TableView>
+                    <HBox spacing="10.0" alignment="CENTER_LEFT">
+                        <TextField fx:id="participantIdField" promptText="ID Participant"/>
+                        <TextField fx:id="participantNomField" promptText="Nom Participant"/>
+                        <TextField fx:id="participantEmailField" promptText="Email Participant"/>
+                        <Button text="Inscrire Participant" onAction="#handleInscrireParticipant" />
+                        <Button text="Annuler l'événement sélectionné" onAction="#handleAnnulerEvenement" />
+                        <Button text="Modifier le lieu" onAction="#handleModifierLieu"/>
+                        <TextField fx:id="newLocationField" promptText="Nouveau lieu" />
+                    </HBox>
+                </VBox>
+            </content>
+        </Tab>
+    </TabPane>
+</VBox>
